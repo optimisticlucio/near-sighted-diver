@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c64ofdxjb2jqy"]
+
+[ext_resource type="Script" uid="uid://bfoa1jy2nq13b" path="res://scripts/window_position_manager.gd" id="1_3f1c7"]
+
+[node name="Window-position-manager" type="Node"]
+script = ExtResource("1_3f1c7")

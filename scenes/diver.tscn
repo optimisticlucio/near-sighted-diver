@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://hlcba70e78hl"]
+
+[ext_resource type="Script" uid="uid://cdlrfwxfe0lp2" path="res://scripts/diver.gd" id="1_cgobh"]
+
+[node name="Diver" type="Node2D"]
+script = ExtResource("1_cgobh")
