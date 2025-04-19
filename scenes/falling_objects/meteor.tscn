@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq00dwmhknwtt"]
+
+[ext_resource type="PackedScene" uid="uid://gl6xiba0kx1n" path="res://scenes/falling_object.tscn" id="1_xnec0"]
+[ext_resource type="Texture2D" uid="uid://be5l8tsy3xs42" path="res://assets/img/meteor.png" id="2_6mitj"]
+
+[node name="Meteor" type="Node2D"]
+
+[node name="FallingObject" parent="." instance=ExtResource("1_xnec0")]
+falling_speed = 100.0
+image = ExtResource("2_6mitj")
+size = 0.8

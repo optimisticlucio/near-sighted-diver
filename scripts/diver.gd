@@ -1,3 +1,4 @@
+class_name Diver
 extends Node2D
 
 @export var main_camera: Camera2D
@@ -28,5 +29,6 @@ func get_vector_towards_center():
 	return -(self.position - get_viewport_center());
 
 func position_at_center_of_viewport():
+	print(get_viewport_center())
 	self.position = get_viewport_center();
 	

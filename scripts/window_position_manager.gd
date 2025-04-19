@@ -3,6 +3,7 @@ extends Node
 @export var main_node: Node
 @export var main_camera: Camera2D
 @export var background_image: Texture2D
+@export var diver: Diver
 var game_monitor_index: int
 
 
@@ -17,6 +18,9 @@ func _ready():
 	create_and_place_background_image();
 	
 	main_camera.anchor_mode = Camera2D.ANCHOR_MODE_FIXED_TOP_LEFT
+	
+	main_camera.position = DisplayServer.window_get_position(game_monitor_index)
+	diver.position_at_center_of_viewport();
 
 
 func create_and_place_background_image():
