@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxmgggpue45f8"]
+[gd_scene load_steps=4 format=3 uid="uid://cxmgggpue45f8"]
 
+[ext_resource type="PackedScene" uid="uid://hlcba70e78hl" path="res://scenes/diver.tscn" id="1_4n1no"]
 [ext_resource type="PackedScene" uid="uid://c64ofdxjb2jqy" path="res://scenes/window-position-manager.tscn" id="1_g2w4a"]
 [ext_resource type="Texture2D" uid="uid://bj4nu8or68xto" path="res://assets/img/test-laios.jpg" id="2_q7s53"]
 
 [node name="Test-scene" type="Node2D"]
+
+[node name="Diver" parent="." node_paths=PackedStringArray("main_camera") instance=ExtResource("1_4n1no")]
+main_camera = NodePath("../Camera2D")
+max_speed = 1000.0
+max_speed_distance = 400.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
