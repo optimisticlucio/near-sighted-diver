@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://hlcba70e78hl"]
+[gd_scene load_steps=5 format=3 uid="uid://hlcba70e78hl"]
 
 [ext_resource type="Script" uid="uid://cdlrfwxfe0lp2" path="res://scripts/diver.gd" id="1_cgobh"]
 [ext_resource type="Texture2D" uid="uid://j0a8gu7e2dpe" path="res://assets/img/test-skydiver.png" id="2_5hnfc"]
+[ext_resource type="Texture2D" uid="uid://mv37f6ccuks7" path="res://assets/img/parachute_out.png" id="2_pxx4y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hnfc"]
 size = Vector2(305, 119)
 
 [node name="Diver" type="Node2D"]
 script = ExtResource("1_cgobh")
+end_game_sprite = ExtResource("2_pxx4y")
 
 [node name="Area2D" type="Area2D" parent="."]
 

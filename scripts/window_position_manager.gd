@@ -1,9 +1,11 @@
+class_name WindowPositionManager
 extends Node
 
 @export var main_node: Node
 @export var main_camera: Camera2D
 @export var background_image: Texture2D
 @export var diver: Diver
+@export var game_manager: GameManager
 var game_monitor_index: int
 
 
@@ -20,7 +22,6 @@ func _ready():
 	main_camera.anchor_mode = Camera2D.ANCHOR_MODE_FIXED_TOP_LEFT
 	
 	main_camera.position = DisplayServer.window_get_position(game_monitor_index)
-	diver.position_at_center_of_viewport();
 
 
 func create_and_place_background_image():
@@ -28,12 +29,15 @@ func create_and_place_background_image():
 	var background_sprite = Sprite2D.new();
 	background_sprite.texture = background_image;
 	# Size it to the screen size.
-	background_sprite.scale = Vector2(DisplayServer.screen_get_size(game_monitor_index)) / background_image.get_size()
+	var screen_to_image_scale = Vector2(DisplayServer.screen_get_size(game_monitor_index)) / background_image.get_size()
+	background_sprite.scale = Vector2(screen_to_image_scale.x, screen_to_image_scale.x)
 	background_sprite.centered = false;
 	background_sprite.z_index = -20;
 	
 	main_node.add_child.call_deferred(background_sprite)
 	background_sprite.position = Vector2(0, 0);
+	
+	game_manager.set_background_image(background_sprite)
 
 func _process(delta):
 	main_camera.position = DisplayServer.window_get_position(game_monitor_index)

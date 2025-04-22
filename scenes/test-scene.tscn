@@ -1,25 +1,38 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxmgggpue45f8"]
+[gd_scene load_steps=8 format=3 uid="uid://cxmgggpue45f8"]
 
+[ext_resource type="PackedScene" uid="uid://c601gdcuftdc6" path="res://scenes/game_manager.tscn" id="1_1gmwy"]
 [ext_resource type="PackedScene" uid="uid://hlcba70e78hl" path="res://scenes/diver.tscn" id="1_4n1no"]
 [ext_resource type="PackedScene" uid="uid://c64ofdxjb2jqy" path="res://scenes/window-position-manager.tscn" id="1_g2w4a"]
+[ext_resource type="Texture2D" uid="uid://cfoy7breqn61o" path="res://assets/img/falling_background.png" id="2_1gmwy"]
 [ext_resource type="PackedScene" uid="uid://cq00dwmhknwtt" path="res://scenes/falling_objects/meteor.tscn" id="2_oktae"]
-[ext_resource type="Texture2D" uid="uid://bj4nu8or68xto" path="res://assets/img/test-laios.jpg" id="2_q7s53"]
 [ext_resource type="PackedScene" uid="uid://41haj75yscyl" path="res://scenes/falling_objects/luggage.tscn" id="5_81352"]
+[ext_resource type="PackedScene" uid="uid://cbxn31ot5m56a" path="res://scenes/start_game_menu.tscn" id="5_wh0gb"]
 
 [node name="Test-scene" type="Node2D"]
 
-[node name="Diver" parent="." node_paths=PackedStringArray("main_camera") instance=ExtResource("1_4n1no")]
+[node name="Window-position-manager" parent="." node_paths=PackedStringArray("main_node", "main_camera", "diver", "game_manager") instance=ExtResource("1_g2w4a")]
+main_node = NodePath("..")
 main_camera = NodePath("../Camera2D")
-max_speed = 1000.0
+background_image = ExtResource("2_1gmwy")
+diver = NodePath("../Diver")
+game_manager = NodePath("../GameManager")
+
+[node name="GameManager" parent="." node_paths=PackedStringArray("diver", "camera") instance=ExtResource("1_1gmwy")]
+total_game_time = 20.0
+diver = NodePath("../Diver")
+camera = NodePath("../Camera2D")
+
+[node name="Diver" parent="." node_paths=PackedStringArray("main_camera") instance=ExtResource("1_4n1no")]
+position = Vector2(0, -807)
+scale = Vector2(0.75, 0.75)
+main_camera = NodePath("../Camera2D")
+max_speed = 1200.0
 max_speed_distance = 400.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Window-position-manager" parent="." node_paths=PackedStringArray("main_node", "main_camera", "diver") instance=ExtResource("1_g2w4a")]
-main_node = NodePath("..")
-main_camera = NodePath("../Camera2D")
-background_image = ExtResource("2_q7s53")
-diver = NodePath("../Diver")
+[node name="StartGameMenu" parent="Camera2D" node_paths=PackedStringArray("game_manager") instance=ExtResource("5_wh0gb")]
+game_manager = NodePath("../../GameManager")
 
 [node name="Meteor" parent="." instance=ExtResource("2_oktae")]
 position = Vector2(894, 730)

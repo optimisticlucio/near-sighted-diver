@@ -1,3 +1,4 @@
+class_name FallingObject
 extends Node2D
 
 @export var horizontal_speed: float = 0;
@@ -5,6 +6,7 @@ extends Node2D
 @export var image: Texture2D;
 @export var size: float = 0.5;
 @export var degrees_to_spin_per_second: float = 0;
+@export var summon_at_bottom: bool = true;
 
 func _ready():
 	get_node("Sprite2D").texture = image;
